@@ -6,11 +6,13 @@ import AddToys from "../Components/AddToys/AddToys";
 import Blogs from "../Components/Blogs/Blogs";
 import Register from "../Components/Register&Login/Register";
 import Login from "../Components/Register&Login/Login";
+import Error from "../Components/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/allToys",
