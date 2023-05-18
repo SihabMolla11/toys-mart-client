@@ -1,11 +1,19 @@
-import { useContext } from "react";
-import { AuthContext } from "./AuthProvider/AuthProvider";
+import Header from "./Components/Header&footer/Header";
+import { Outlet } from "react-router-dom";
+import Footer from "./Components/Header&footer/Footer";
 
 const App = () => {
-  const { user } = useContext(AuthContext);
   return (
     <div>
-      <h3 className="text-4xl">{user}</h3>
+      <div>
+        <Header></Header>
+      </div>
+      <div>
+        <Outlet></Outlet>
+      </div>
+      <div>
+        <Footer></Footer>
+      </div>
     </div>
   );
 };
