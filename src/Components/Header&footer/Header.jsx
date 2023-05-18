@@ -42,10 +42,13 @@ const Header = () => {
                 <NavLink to="/mytoys">My Toys</NavLink>
               </li>
               <li className="my-menuItem">
-                <NavLink to="/addtyps">Add A Toy</NavLink>
+                <NavLink to="/addToys">Add A Toy</NavLink>
               </li>
               <li className="my-menuItem">
                 <NavLink to="/blog">Blogs</NavLink>
+              </li>
+              <li className="my-menuItem">
+                {!user && <NavLink to="/register">Register</NavLink>}
               </li>
             </ul>
           </div>
@@ -68,20 +71,23 @@ const Header = () => {
               <NavLink to="/mytoys">My Toys</NavLink>
             </li>
             <li className="my-menuItem">
-              <NavLink to="/addtyps">Add A Toy</NavLink>
+              <NavLink to="/addToys">Add A Toy</NavLink>
             </li>
             <li className="my-menuItem">
               <NavLink to="/blog">Blogs</NavLink>
+            </li>
+            <li className="my-menuItem">
+              {!user && <NavLink to="/register">Register</NavLink>}
             </li>
           </ul>
         </div>
         <div className="navbar-end flex gap-8">
           {user ? (
-            <Link to="/login" className="my-btn ">
-              Log Out
-            </Link>
+            <button className="my-btn ">Log Out</button>
           ) : (
-            <button className="my-btn ">Login</button>
+            <Link to="/login" className="my-btn ">
+              Login
+            </Link>
           )}
           <div>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">

@@ -16,5 +16,5 @@
 }
 
 .my-btn {
-  @apply border-solid border-2 border-blue-500 px-4 py-2 rounded-lg font-semibold hover:bg-blue-500 hover:text-white;
+  @apply border-solid border-2 border-[#77667F] px-4 py-2 rounded-lg font-semibold hover:bg-[#77667F] hover:text-white;
 }
