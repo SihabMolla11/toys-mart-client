@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import GoogleSigning from "./GoogleSigning";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [error, setError] = "";
@@ -17,6 +19,10 @@ const Login = () => {
       .then((result) => {
         const loggingUser = result.user;
         console.log(loggingUser);
+        toast.success("Your successfully login", {
+          position: "top-center",
+        });
+        form.rest();
       })
       .catch((error) => {
         setError(error.message);
@@ -60,6 +66,7 @@ const Login = () => {
               type="submit"
               value="Login"
             />
+            <ToastContainer />
           </div>
         </form>
         <p className="mt-2 text-red-600">{error}</p>

@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import GoogleSigning from "./GoogleSigning";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const [error, setError] = useState("");
   const { register } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handelRegister = (event) => {
     event.preventDefault();
@@ -13,10 +16,21 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     // console.log(email, password);
+    if (password.length <= 7) {
+      setError("Password add at least 8 characters");
+      return;
+    }
+
     register(email, password)
       .then((result) => {
         const loggingUser = result.user;
         console.log(loggingUser);
+        toast.success("successfully registered", {
+          position: "top-center",
+        });
+        form.reset();
+        setError("");
+        navigate("/");
       })
       .catch((error) => {
         setError(error.message);
@@ -85,6 +99,7 @@ const Register = () => {
                 type="submit"
                 value="Register"
               />
+              <ToastContainer />
             </div>
           </form>
           <p className="mt-2 text-red-600">{error}</p>
