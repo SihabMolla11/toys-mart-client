@@ -5,7 +5,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { FaRegUserCircle } from "react-icons/fa";
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, loading } = useContext(AuthContext);
 
   const handelLogOut = () => {
     logOut()
@@ -62,13 +62,13 @@ const Header = () => {
           </div>
           <Link to="/" className="flex items-center gap-8">
             <img className="w-28" src={logo} alt="" />
-            {/* <a className="text-2xl font-bold hidden md:block">
+            <p className="text-2xl font-bold hidden md:block">
               Video game mart
-            </a> */}
+            </p>
           </Link>
         </div>
-        <div className="hidden lg:flex">
-          <ul className="gap-8  text-lg font-semibold menu-horizontal px-1">
+        <div className="hidden text-md lg:flex">
+          <ul className="gap-8 ml-4  font-semibold menu-horizontal px-1">
             <li className="my-menuItem">
               <NavLink to="/">Home</NavLink>
             </li>
@@ -96,19 +96,26 @@ const Header = () => {
             </button>
           ) : (
             <Link to="/login" className="my-btn ">
-              Login
+              {loading ? (
+                <div
+                  className="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-gray-400 rounded-full"
+                  role="status"
+                  aria-label="loading"
+                >
+                  <span className="sr-only">Loading...</span>
+                </div>
+              ) : (
+                <p>Login</p>
+              )}
             </Link>
           )}
           <div>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-22 rounded-full">
                 {user ? (
-                  <img
-                    title={user?.name}
-                    src="https://s17189.pcdn.co/blog/wp-content/uploads/2018/04/jeshoots-com-250229-unsplash.jpg"
-                  />
+                  <img title={user?.displayName} src={user.photoURL} />
                 ) : (
-                  <div title="please login" className="text-5xl">
+                  <div title="please login First" className="text-5xl">
                     <FaRegUserCircle />
                   </div>
                 )}

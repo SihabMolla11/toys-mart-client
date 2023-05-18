@@ -1,8 +1,9 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -15,7 +16,7 @@ const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState("sihab");
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const googleSigning = () => {
@@ -32,6 +33,17 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
+
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (user) => {
+      // console.log(user);
+      setUser(user);
+      setLoading(false);
+    });
+    return () => {
+      unSubscribe();
+    };
+  }, []);
 
   const logOut = () => {
     setLoading(true);
