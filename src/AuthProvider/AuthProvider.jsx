@@ -5,6 +5,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import app from "../Firebase/firebase";
 
@@ -14,7 +15,7 @@ const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("sihab");
   const [loading, setLoading] = useState(true);
 
   const googleSigning = () => {
@@ -32,12 +33,18 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
+
   const authInfo = {
     user,
     loading,
     googleSigning,
     register,
     loginUser,
+    logOut,
   };
 
   return (

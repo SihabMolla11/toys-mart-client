@@ -5,7 +5,15 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { FaRegUserCircle } from "react-icons/fa";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handelLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   return (
     <div className="bg-blue-50">
@@ -52,12 +60,12 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <div className="flex items-center gap-8">
+          <Link to="/" className="flex items-center gap-8">
             <img className="w-28" src={logo} alt="" />
-            <a className="text-2xl font-bold hidden md:block">
+            {/* <a className="text-2xl font-bold hidden md:block">
               Video game mart
-            </a>
-          </div>
+            </a> */}
+          </Link>
         </div>
         <div className="hidden lg:flex">
           <ul className="gap-8  text-lg font-semibold menu-horizontal px-1">
@@ -83,7 +91,9 @@ const Header = () => {
         </div>
         <div className="navbar-end flex gap-8">
           {user ? (
-            <button className="my-btn ">Log Out</button>
+            <button onClick={handelLogOut} className="my-btn ">
+              Log Out
+            </button>
           ) : (
             <Link to="/login" className="my-btn ">
               Login
