@@ -4,11 +4,11 @@ import Footer from "./Components/Header&footer/Footer";
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-[#F2F2F2]">
       <div>
         <Header></Header>
       </div>
-      <div className="bg-[#F2F2F2]">
+      <div >
         <Outlet></Outlet>
       </div>
       <div>

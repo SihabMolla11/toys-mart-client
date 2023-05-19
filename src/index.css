@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .my-Container {
-  @apply max-w-[1250px] mx-auto;
+  @apply max-w-[1250px] px-2 mx-auto;
 }
 
 .my-menuItem {
