@@ -1,4 +1,4 @@
-import { FaGoogle } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
@@ -28,7 +28,7 @@ const GoogleSigning = () => {
         onClick={handelGoogleSigning}
         className="flex text-2xl items-center border-solid border-2 border-blue-500 px-4 py-3 mt-6 w-full rounded-lg text-blue-500 hover:bg-blue-500 hover:text-white gap-4"
       >
-        <FaGoogle /> <span>Sign in with google</span>
+        <FcGoogle /> <span>Sign in with google</span>
         <ToastContainer />
       </button>
       <p className="text-red-500">{error}</p>
