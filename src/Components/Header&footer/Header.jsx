@@ -16,7 +16,7 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-blue-50">
+    <div className="bg-[#F2F2F2]">
       <div className="my-Container navbar ">
         <div className="navbar-start">
           <div className="dropdown">

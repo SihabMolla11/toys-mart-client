@@ -8,7 +8,7 @@ const App = () => {
       <div>
         <Header></Header>
       </div>
-      <div>
+      <div className="bg-[#F2F2F2]">
         <Outlet></Outlet>
       </div>
       <div>
