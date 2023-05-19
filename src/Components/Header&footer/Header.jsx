@@ -15,6 +15,33 @@ const Header = () => {
       });
   };
 
+  const navItems = (
+    <>
+      <li className=" my-menuItem">
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li className="my-menuItem">
+        <NavLink to="/alltoys">All Toys</NavLink>
+      </li>
+      {user && (
+        <li className="my-menuItem">
+          <NavLink to="/mytoys">My Toys</NavLink>
+        </li>
+      )}
+      {user && (
+        <li className="my-menuItem">
+          <NavLink to="/addToys">Add A Toy</NavLink>
+        </li>
+      )}
+      <li className="my-menuItem">
+        <NavLink to="/blog">Blogs</NavLink>
+      </li>
+      <li className="my-menuItem">
+        {!user && <NavLink to="/register">Register</NavLink>}
+      </li>
+    </>
+  );
+
   return (
     <div className="bg-[#F2F2F2]">
       <div className="my-Container navbar ">
@@ -40,24 +67,7 @@ const Header = () => {
               tabIndex={0}
               className=" font-medium  menu-compact dropdown-content mt-3 p-2 shadow bg-base-200 rounded-box w-96"
             >
-              <li className=" my-menuItem">
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li className="my-menuItem">
-                <NavLink to="/alltoys">All Toys</NavLink>
-              </li>
-              <li className="my-menuItem">
-                <NavLink to="/mytoys">My Toys</NavLink>
-              </li>
-              <li className="my-menuItem">
-                <NavLink to="/addToys">Add A Toy</NavLink>
-              </li>
-              <li className="my-menuItem">
-                <NavLink to="/blog">Blogs</NavLink>
-              </li>
-              <li className="my-menuItem">
-                {!user && <NavLink to="/register">Register</NavLink>}
-              </li>
+              {navItems}
             </ul>
           </div>
           <Link to="/" className="flex items-center gap-8">
@@ -69,24 +79,7 @@ const Header = () => {
         </div>
         <div className="hidden text-md lg:flex">
           <ul className="gap-8 ml-4  font-semibold menu-horizontal px-1">
-            <li className="my-menuItem">
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li className="my-menuItem">
-              <NavLink to="/alltoys">All Toys</NavLink>
-            </li>
-            <li className="my-menuItem">
-              <NavLink to="/mytoys">My Toys</NavLink>
-            </li>
-            <li className="my-menuItem">
-              <NavLink to="/addToys">Add A Toy</NavLink>
-            </li>
-            <li className="my-menuItem">
-              <NavLink to="/blog">Blogs</NavLink>
-            </li>
-            <li className="my-menuItem">
-              {!user && <NavLink to="/register">Register</NavLink>}
-            </li>
+            {navItems}
           </ul>
         </div>
         <div className="navbar-end flex gap-8">
