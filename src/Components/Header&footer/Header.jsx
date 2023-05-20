@@ -73,7 +73,7 @@ const Header = () => {
           <Link to="/" className="flex items-center gap-8">
             <img className="w-28" src={logo} alt="" />
             <p className="text-2xl font-bold hidden md:block">
-              Video game mart
+              Game Toys Mart
             </p>
           </Link>
         </div>

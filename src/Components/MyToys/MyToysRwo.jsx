@@ -1,10 +1,11 @@
-import { FaRegTrashAlt } from "react-icons/fa";
+import { FaRegTrashAlt, FaRegEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 const MyToysRwo = ({ myGame, handelDEleteGame }) => {
   const {
     _id,
-    name,
     rating,
     description,
     photo,
@@ -17,14 +18,6 @@ const MyToysRwo = ({ myGame, handelDEleteGame }) => {
   return (
     <>
       <tr>
-        <td className="text-center">
-          <button
-            onClick={() => handelDEleteGame(_id)}
-            className="text-2xl p-2 rounded-full hover:text-red-600 hover:bg-red-300 bg-red-100 text-red-500"
-          >
-            <FaRegTrashAlt />
-          </button>
-        </td>
         <td>
           <img
             className="rounded-md h-20 w-20 "
@@ -33,29 +26,39 @@ const MyToysRwo = ({ myGame, handelDEleteGame }) => {
           />
         </td>
         <td>
-          <p className="font-bold text-2xl">{gameName}</p>
+          <p className=" font-medium text-xl">{gameName}</p>
         </td>
         <td>
           <p className="font-semibold">{category?.label}</p>
         </td>
         <td>
-          <p className="font-semibold">{"$" + price}</p>
+          <p className="font-semibold text-center">{"$" + price}</p>
         </td>
         <td>
-          <p className=" font-semibold">{quantity}</p>
+          <p className=" text-center font-semibold">{quantity}</p>
         </td>
-        <td>
-          <p className=" font-semibold">{rating}</p>
-        </td>
-        <td>
-          <p className=" font-semibold">{description}</p>
+        <td className="text-center">
+          <Rating
+            style={{ maxWidth: 100 }}
+            value={rating}
+            readOnly
+          />
         </td>
         <td className="text-center">
           <Link to={`/update/${_id}`}>
-            <button className="my-btn ml-4 flex items-center gap-4">
-              <span>Update</span>
+            <button className="text-2xl p-2 rounded-full hover:text-blue-600 hover:bg-blue-300 bg-blue-100 text-blue-500">
+              <FaRegEdit />
             </button>
           </Link>
+        </td>
+
+        <td className="text-center">
+          <button
+            onClick={() => handelDEleteGame(_id)}
+            className="text-2xl p-2 rounded-full hover:text-red-600 hover:bg-red-300 bg-red-100 text-red-500"
+          >
+            <FaRegTrashAlt />
+          </button>
         </td>
       </tr>
     </>

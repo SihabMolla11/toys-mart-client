@@ -28,10 +28,10 @@ const ToysTable = ({ game }) => {
           <p className="font-semibold">{name}</p>
         </td>
         <td>
-          <p className="font-semibold">{"$" + price}</p>
+          <p className="font-semibold text-center">{"$" + price}</p>
         </td>
         <td>
-          <p className=" font-semibold">{quantity}</p>
+          <p className=" font-semibold text-center">{quantity}</p>
         </td>
         <td className="text-center">
           <button onClick={()=>handelViewDetail(_id)} className="my-btn flex items-center gap-4"> <span>View Detail</span> <FaArrowRight/> </button>

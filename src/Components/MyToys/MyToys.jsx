@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import MyToysRwo from "./myToysRwo";
-import { FcEmptyTrash } from "react-icons/fc";
+// import { FcEmptyTrash } from "react-icons/fc";
 import Swal from "sweetalert2";
 
 const MyToys = () => {
@@ -15,8 +15,6 @@ const MyToys = () => {
   }, [url]);
 
   //   console.log(myGames);
-
-
 
   const handelDEleteGame = (id) => {
     // console.log(id);
@@ -52,15 +50,15 @@ const MyToys = () => {
         <table className="table table-compact w-full">
           <thead>
             <tr>
-              <th>DELETE BUTTON</th>
-              <th>image</th>
+              <th >image</th>
               <th>game name</th>
               <th>sub-category</th>
-              <th>price</th>
-              <th>quantity</th>
+              <th className="text-center">price</th>
+              <th className="text-center">quantity</th>
               <th>ratting</th>
-              <th> description</th>
-              <th>update button</th>
+              {/* <th> description</th> */}
+              <th className="text-center">update</th>
+              <th className="text-center">DELETE</th>
             </tr>
           </thead>
           <tbody>

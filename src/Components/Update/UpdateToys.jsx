@@ -79,7 +79,7 @@ const UpdateToys = () => {
   return (
     <div className="my-Container my-6">
       <h2 className="my-6 text-[#4A3F5E] text-center flex items-center justify-center gap-6 text-5xl font-medium">
-        <FaRegHandPointRight className="text-[#EBB943]" /> post your video game
+        <FaRegHandPointRight className="text-[#EBB943]" /> Update Your Toys
       </h2>
       <div>
         <div className="card card-compact w-full shadow-xl">
@@ -208,13 +208,18 @@ const UpdateToys = () => {
                     Description of the game
                   </span>
                 </label>
-                <input
+                {/* <input
                   type="text"
                   placeholder="description of the game"
                   name="description"
                   defaultValue={description}
                   className="my-input "
-                />
+                /> */}
+                <textarea
+                  className="textarea textarea-bordered w-full h-40"
+                  placeholder="Bio"
+                  name="description"
+                ></textarea>
               </div>
               <input
                 className="bg-green-500 mt-8 text-white py-3 px-8 text-lg font-semibold rounded-md"

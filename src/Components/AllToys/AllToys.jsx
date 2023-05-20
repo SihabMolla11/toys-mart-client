@@ -15,8 +15,8 @@ const AllToys = () => {
               <th>NAME OF GAME</th>
               <th>category</th>
               <th>seller name</th>
-              <th>price</th>
-              <th>quantity</th>
+              <th className="text-center">price</th>
+              <th className="text-center">quantity</th>
               <th>view detail</th>
             </tr>
           </thead>
