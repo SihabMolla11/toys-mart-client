@@ -21,6 +21,16 @@ const MyToys = () => {
 
   const handelDEleteGame = (id) => {
     console.log(id);
+    fetch(`http://localhost:5000/games/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          const remaining = myGames.filter((myGame) => myGame._id == id);
+          setMyGames(remaining);
+        }
+      });
   };
 
   return (
