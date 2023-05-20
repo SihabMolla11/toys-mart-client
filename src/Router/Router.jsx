@@ -8,6 +8,7 @@ import Register from "../Components/Register&Login/Register";
 import Login from "../Components/Register&Login/Login";
 import Error from "../Components/Error";
 import Home from "../Components/Home/Home/Home";
+import UpdateGame from "../Components/Update/UpdateToys";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
       {
         path: "/allToys",
         element: <AllToys></AllToys>,
-        loader: () => fetch("http://localhost:5000/games"),
+        loader: () => fetch("http://localhost:5000/toys"),
       },
       {
         path: "/myToys",
@@ -31,6 +32,12 @@ const router = createBrowserRouter([
       {
         path: "/addToys",
         element: <AddToys></AddToys>,
+      },
+      {
+        path: "update/:id",
+        element: <UpdateGame></UpdateGame>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/toys/${params.id}`),
       },
       {
         path: "/blog",

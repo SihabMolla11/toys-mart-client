@@ -22,7 +22,7 @@ const ToysTable = ({ game }) => {
           <p className="font-bold text-2xl">{gameName}</p>
         </td>
         <td>
-          <p className="font-semibold">{category.label}</p>
+          <p className="font-semibold">{category?.label}</p>
         </td>
         <td>
           <p className="font-semibold">{name}</p>

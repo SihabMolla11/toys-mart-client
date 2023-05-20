@@ -2,35 +2,48 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import MyToysRwo from "./myToysRwo";
 import { FcEmptyTrash } from "react-icons/fc";
+import Swal from "sweetalert2";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myGames, setMyGames] = useState([]);
-  const url = `http://localhost:5000/games/mydata?email=${user?.email}`;
+  const url = `http://localhost:5000/toys-mydata?email=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setMyGames(data));
   }, [url]);
 
-  console.log(myGames);
+  //   console.log(myGames);
 
-  const handelUpdateGame = (id) => {
-    console.log(id);
-  };
+
 
   const handelDEleteGame = (id) => {
-    console.log(id);
-    fetch(`http://localhost:5000/games/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount > 0) {
-          const remaining = myGames.filter((myGame) => myGame._id == id);
-          setMyGames(remaining);
-        }
-      });
+    // console.log(id);
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        fetch(`http://localhost:5000/toys/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              const remaining = myGames.filter((myGame) => myGame._id !== id);
+              setMyGames(remaining);
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -55,7 +68,6 @@ const MyToys = () => {
               <MyToysRwo
                 key={myGame._id}
                 myGame={myGame}
-                handelUpdateGame={handelUpdateGame}
                 handelDEleteGame={handelDEleteGame}
               ></MyToysRwo>
             ))}

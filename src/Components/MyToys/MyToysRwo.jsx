@@ -1,7 +1,18 @@
 import { FaRegTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const MyToysRwo = ({ myGame, handelDEleteGame, handelUpdateGame }) => {
-  const { _id, name, rating, description, photo, gameName, price, quantity, category } = myGame;
+const MyToysRwo = ({ myGame, handelDEleteGame }) => {
+  const {
+    _id,
+    name,
+    rating,
+    description,
+    photo,
+    gameName,
+    price,
+    quantity,
+    category,
+  } = myGame;
 
   return (
     <>
@@ -25,7 +36,7 @@ const MyToysRwo = ({ myGame, handelDEleteGame, handelUpdateGame }) => {
           <p className="font-bold text-2xl">{gameName}</p>
         </td>
         <td>
-          <p className="font-semibold">{category.label}</p>
+          <p className="font-semibold">{category?.label}</p>
         </td>
         <td>
           <p className="font-semibold">{"$" + price}</p>
@@ -36,16 +47,15 @@ const MyToysRwo = ({ myGame, handelDEleteGame, handelUpdateGame }) => {
         <td>
           <p className=" font-semibold">{rating}</p>
         </td>
-        <td >
+        <td>
           <p className=" font-semibold">{description}</p>
         </td>
         <td className="text-center">
-          <button
-            onClick={() => handelUpdateGame(_id)}
-            className="my-btn ml-4 flex items-center gap-4"
-          >
-            <span>Update</span>
-          </button>
+          <Link to={`/update/${_id}`}>
+            <button className="my-btn ml-4 flex items-center gap-4">
+              <span>Update</span>
+            </button>
+          </Link>
         </td>
       </tr>
     </>
