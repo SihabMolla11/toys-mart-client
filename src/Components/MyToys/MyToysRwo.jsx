@@ -9,7 +9,7 @@ const MyToysRwo = ({ myGame, handelDEleteGame }) => {
     rating,
     description,
     photo,
-    gameName,
+    toysName,
     price,
     quantity,
     category,
@@ -26,7 +26,7 @@ const MyToysRwo = ({ myGame, handelDEleteGame }) => {
           />
         </td>
         <td>
-          <p className=" font-medium text-xl">{gameName}</p>
+          <p className=" font-medium text-xl">{toysName}</p>
         </td>
         <td>
           <p className="font-semibold">{category?.label}</p>

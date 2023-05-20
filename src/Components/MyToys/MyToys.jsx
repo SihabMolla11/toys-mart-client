@@ -45,34 +45,36 @@ const MyToys = () => {
   };
 
   return (
-    <div className="my-Container">
-      <div className="overflow-x-auto">
-        <table className="table table-compact w-full">
-          <thead>
-            <tr>
-              <th >image</th>
-              <th>game name</th>
-              <th>sub-category</th>
-              <th className="text-center">price</th>
-              <th className="text-center">quantity</th>
-              <th>ratting</th>
-              {/* <th> description</th> */}
-              <th className="text-center">update</th>
-              <th className="text-center">DELETE</th>
-            </tr>
-          </thead>
-          <tbody>
-            {myGames.map((myGame) => (
-              <MyToysRwo
-                key={myGame._id}
-                myGame={myGame}
-                handelDEleteGame={handelDEleteGame}
-              ></MyToysRwo>
-            ))}
-          </tbody>
-        </table>
+    <>
+      <div className=" my-Container mt-10 ">
+        <div className="overflow-x-auto rounded-t-lg  ">
+          <table className="table table-compact  w-full">
+            <thead className="border-t-2 rounded-lg border-[#ffffff]">
+              <tr>
+                <th className="border-x-2 border-[#ffffff]">image</th>
+                <th className="border-x-2 border-[#ffffff]">game name</th>
+                <th className="border-x-2 border-[#ffffff]">sub-category</th>
+                <th className="text-center border-[#ffffff]">price</th>
+                <th className="text-center border-[#ffffff]">quantity</th>
+                <th className="border-x-2 border-[#ffffff]">ratting</th>
+                {/* <th> description</th> */}
+                <th className="text-center border-x-2 border-[#ffffff]">update</th>
+                <th className="text-center border-x-2 border-[#ffffff]">DELETE</th>
+              </tr>
+            </thead>
+            <tbody>
+              {myGames.map((myGame) => (
+                <MyToysRwo
+                  key={myGame._id}
+                  myGame={myGame}
+                  handelDEleteGame={handelDEleteGame}
+                ></MyToysRwo>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

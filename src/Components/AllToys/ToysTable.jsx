@@ -1,7 +1,7 @@
 import { FaArrowRight } from "react-icons/fa";
 
 const ToysTable = ({ game }) => {
-  const { _id, name, photo, gameName, price, quantity, category } = game;
+  const { _id, name, photo, toysName, price, quantity, category } = game;
 
     const handelViewDetail = (id)=>{
         console.log(id)
@@ -19,7 +19,7 @@ const ToysTable = ({ game }) => {
           />
         </td>
         <td>
-          <p className="font-bold text-2xl">{gameName}</p>
+          <p className=" font-medium text-xl">{toysName}</p>
         </td>
         <td>
           <p className="font-semibold">{category?.label}</p>

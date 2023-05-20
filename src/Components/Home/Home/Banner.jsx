@@ -13,14 +13,12 @@ const Banner = () => {
           <Lottie animationData={game1} loop={true} />
           <div>
             <h1 className="text-5xl font-bold capitalize">
-              welcome to us <br />
-              GameWorld Central
+              welcome to us <br /> game Toys Central
             </h1>
             <p className="py-6">
-              Your ultimate destination for all things gaming.If you are looking
-              <br /> for a place where your game collections will be. Through
-              which you can sell and buy video games. Then you have come to the
-              right place,
+              If you think you want to show off and sell the most famous  video
+              game <br/> toys you have, you have come to the right place. So what is the
+              delay, post your best video game toys now!
             </p>
             {user ? (
               <button className="my-btn">

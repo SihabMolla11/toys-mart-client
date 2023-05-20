@@ -7,8 +7,8 @@ import Blogs from "../Components/Blogs/Blogs";
 import Register from "../Components/Register&Login/Register";
 import Login from "../Components/Register&Login/Login";
 import Error from "../Components/Error";
-import Home from "../Components/Home/Home/Home";
 import UpdateGame from "../Components/Update/UpdateToys";
+import Home from "../Components/Home/Home";
 
 const router = createBrowserRouter([
   {

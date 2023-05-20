@@ -1,38 +1,41 @@
 import { FaRegHandPointRight } from "react-icons/fa";
-import videoGame from "../../assets/game.jpg";
-import { useContext, useState } from "react";
+import videoGametoys from "../../assets/game.jpg";
+import { useContext, useRef, useState } from "react";
 import Select from "react-select";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 const AddToys = () => {
   const [selectedOptionm, setSelectedOption] = useState(null);
 
   const { user } = useContext(AuthContext);
 
+  const ratingRef = useRef(null);
+  const [rating, setRating] = useState(0);
+
   const options = [
-    { value: "Car", label: "Car" },
-    { value: "Cricket", label: "Cricket" },
-    { value: "Table Tannins", label: "Table Tannins" },
-    { value: "Army shooting", label: "Army shooting" },
-    { value: "Battle Royale", label: "Battle Royale" },
-    { value: "Fight", label: "Fight" },
+    { value: "Toys Pc game", label: "Toys Pc game" },
+    { value: "Toys for mubile game", label: "Toys for mubile game" },
+    { value: "Toys virtual reality", label: "Toys virtual reality" },
+    { value: "Toys for child video game", label: "Toys for child video game" },
   ];
 
   const handelAddToys = (event) => {
     event.preventDefault();
     const form = event.target;
     const photo = form.photo.value;
-    const gameName = form.GameName.value;
+    const toysName = form.toysName.value;
     const name = form.name.value;
     const email = form.email.value;
     const price = form.price.value;
-    const rating = form.raging.value;
+    // const rating = form.raging.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
-    const newGame = {
+    const newToys = {
       photo,
-      gameName,
+      toysName,
       name,
       email,
       price,
@@ -40,13 +43,14 @@ const AddToys = () => {
       quantity,
       description,
     };
-    newGame.category = selectedOptionm;
-    // console.log(newGame);
+    newToys.category = selectedOptionm;
+    newToys.rating = rating;
+    // console.log(newToys);
 
     fetch("http://localhost:5000/toys", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newGame),
+      body: JSON.stringify(newToys),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -69,7 +73,7 @@ const AddToys = () => {
       <div>
         <div className="card card-compact w-full shadow-xl">
           <figure>
-            <img src={videoGame} alt="Shoes" className="w-full" />
+            <img src={videoGametoys} alt="Shoes" className="w-full" />
           </figure>
           <div className="card-body">
             <form onSubmit={handelAddToys} className=" px-16">
@@ -83,19 +87,21 @@ const AddToys = () => {
                     placeholder="Photo url"
                     name="photo"
                     className=" my-input "
+                    required
                   />
                 </div>
                 <div className="w-full">
                   <label className="label">
                     <span className="text-md font-medium">
-                      Name of the game
+                      Name of the Toys
                     </span>
                   </label>
                   <input
                     type="text"
-                    placeholder="name of the game"
-                    name="GameName"
+                    placeholder="name of the Toys"
+                    name="toysName"
                     className=" my-input "
+                    required
                   />
                 </div>
               </div>
@@ -110,6 +116,7 @@ const AddToys = () => {
                     name="name"
                     defaultValue={user?.displayName}
                     className=" my-input"
+                    required
                   />
                 </div>
                 <div className="w-full">
@@ -130,7 +137,7 @@ const AddToys = () => {
                 <div className="w-full">
                   <label className="label">
                     <span className="text-md font-medium">
-                      Select Game category
+                      Select Toys category
                     </span>
                   </label>
                   <Select
@@ -138,6 +145,7 @@ const AddToys = () => {
                     defaultValue={selectedOptionm}
                     onChange={setSelectedOption}
                     options={options}
+                    required
                   />
                 </div>
                 <div className="w-full">
@@ -149,6 +157,7 @@ const AddToys = () => {
                     placeholder="$ price of the game"
                     name="price"
                     className="my-input "
+                    required
                   />
                 </div>
               </div>
@@ -157,11 +166,17 @@ const AddToys = () => {
                   <label className="label">
                     <span className="text-md font-medium">Game rating</span>
                   </label>
-                  <input
+                  {/* <input
                     type="number"
                     placeholder="rating of the game"
                     name="raging"
                     className=" my-input"
+                  /> */}
+                  <Rating
+                    style={{ maxWidth: 180 }}
+                    ref={ratingRef}
+                    value={rating}
+                    onChange={setRating}
                   />
                 </div>
                 <div className="w-full">
@@ -174,6 +189,7 @@ const AddToys = () => {
                     type="number"
                     placeholder="Available quantity"
                     name="quantity"
+                    required
                     className="my-input "
                   />
                 </div>
