@@ -6,11 +6,13 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import useTitle from "../../hooks/useTitle";
 
 const AddToys = () => {
   const [selectedOptionm, setSelectedOption] = useState(null);
 
   const { user } = useContext(AuthContext);
+  useTitle("Add Toys");
 
   const ratingRef = useRef(null);
   const [rating, setRating] = useState(0);
@@ -55,11 +57,7 @@ const AddToys = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          Swal.fire(
-            "game post successfully",
-            "Your new video game added successful",
-            "success"
-          );
+          Swal.fire(" successful", "Your new Toy added successful", "success");
           form.reset();
         }
       });
@@ -137,7 +135,7 @@ const AddToys = () => {
                 <div className="w-full">
                   <label className="label">
                     <span className="text-md font-medium">
-                      Select Toys category
+                      Select Toy category
                     </span>
                   </label>
                   <Select
@@ -150,11 +148,11 @@ const AddToys = () => {
                 </div>
                 <div className="w-full">
                   <label className="label">
-                    <span className="text-md font-medium">Game price</span>
+                    <span className="text-md font-medium">Toy price</span>
                   </label>
                   <input
                     type="number"
-                    placeholder="$ price of the game"
+                    placeholder="$ price of the Toy"
                     name="price"
                     className="my-input "
                     required
@@ -164,14 +162,8 @@ const AddToys = () => {
               <div className="flex gap-10 mb-4">
                 <div className="w-full">
                   <label className="label">
-                    <span className="text-md font-medium">Game rating</span>
+                    <span className="text-md font-medium">Toy rating</span>
                   </label>
-                  {/* <input
-                    type="number"
-                    placeholder="rating of the game"
-                    name="raging"
-                    className=" my-input"
-                  /> */}
                   <Rating
                     style={{ maxWidth: 180 }}
                     ref={ratingRef}
@@ -197,15 +189,9 @@ const AddToys = () => {
               <div className="w-full">
                 <label className="label">
                   <span className="text-md font-medium">
-                    Description of the game
+                    Description of the Toys
                   </span>
                 </label>
-                {/* <input
-                  type="text"
-                  placeholder="description of the game"
-                  name="description"
-                  className="my-input "
-                /> */}
                 <textarea
                   className="textarea textarea-bordered w-full h-40"
                   placeholder="Bio"
@@ -213,9 +199,9 @@ const AddToys = () => {
                 ></textarea>
               </div>
               <input
-                className="bg-green-500 mt-8 text-white py-3 px-8 text-lg font-semibold rounded-md"
+                className="bg-green-500 mt-8 cursor-pointer text-white py-3 px-8 text-lg font-semibold rounded-md"
                 type="submit"
-                value="Submit your game"
+                value="Post your Toy"
               />
             </form>
           </div>

@@ -3,8 +3,11 @@ import { Rating } from "@smastrom/react-rating";
 import { FcApproval } from "react-icons/fc";
 
 import "@smastrom/react-rating/style.css";
+import useTitle from "../../hooks/useTitle";
 
 const ViewDetail = () => {
+  useTitle("Toys Detail");
+
   const toy = useLoaderData();
   console.log(toy);
   const {
@@ -56,7 +59,9 @@ const ViewDetail = () => {
         </div>
         <div></div>
       </div>
-      <h3 className="text-3xl mt-8 mb-4 font-semibold">{toysName} description:- </h3>
+      <h3 className="text-3xl mt-8 mb-4 font-semibold">
+        {toysName} description:-{" "}
+      </h3>
       <p>{description}</p>
     </div>
   );

@@ -3,6 +3,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import MyToysRwo from "./myToysRwo";
 // import { FcEmptyTrash } from "react-icons/fc";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -13,6 +14,8 @@ const MyToys = () => {
       .then((res) => res.json())
       .then((data) => setMyToys(data));
   }, [url]);
+
+  useTitle('My Toys')
 
   //   console.log(mytoys);
 

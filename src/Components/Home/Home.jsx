@@ -1,3 +1,4 @@
+import useTitle from "../../hooks/useTitle";
 import Banner from "./Home/Banner";
 import Carousel from "./Home/Carousel";
 import Gallery from "./Home/Gallery";
@@ -5,6 +6,8 @@ import ShopByCategory from "./Home/ShopByCategory";
 import UseInfo from "./Home/UseInfo";
 
 const Home = () => {
+  useTitle("Home");
+
   return (
     <div>
       <div className="banner">

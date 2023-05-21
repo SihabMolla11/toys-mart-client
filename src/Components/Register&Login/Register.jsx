@@ -4,11 +4,13 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
   const [error, setError] = useState("");
   const { register } = useContext(AuthContext);
   const navigate = useNavigate();
+  useTitle("Register");
 
   const handelRegister = (event) => {
     event.preventDefault();
@@ -30,7 +32,7 @@ const Register = () => {
         });
         form.reset();
         setError("");
-        // navigate("/");
+        navigate("/");
       })
       .catch((error) => {
         setError(error.message);
@@ -95,7 +97,7 @@ const Register = () => {
             </div>
             <div className="form-control mt-4">
               <input
-                className="w-full py-3 rounded-md text-white font-medium text-xl bg-blue-500 outline-0"
+                className="w-full py-3 cursor-pointer rounded-md text-white font-medium text-xl bg-blue-500 outline-0"
                 type="submit"
                 value="Register"
               />

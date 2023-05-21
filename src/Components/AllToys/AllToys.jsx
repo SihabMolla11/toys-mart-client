@@ -1,4 +1,5 @@
 // import { useLoaderData } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 import ToysTable from "./ToysTable";
 import { useEffect, useState } from "react";
 
@@ -6,6 +7,7 @@ const AllToys = () => {
   // const toys = useLoaderData();
 
   const [toys, setToys] = useState([]);
+  useTitle("All Toys");
   useEffect(() => {
     fetch("http://localhost:5000/toys")
       .then((res) => res.json())

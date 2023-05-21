@@ -3,12 +3,11 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { Rating } from "@smastrom/react-rating";
 import { FaArrowRight } from "react-icons/fa";
-
 import "@smastrom/react-rating/style.css";
 import { Link } from "react-router-dom";
-
 const ShopByCategory = () => {
   const [activeToyas, setActiveToys] = useState("Toys Pc game");
+
 
   const [toys, setToys] = useState([]);
   useEffect(() => {
@@ -25,19 +24,19 @@ const ShopByCategory = () => {
     setActiveToys(category);
   };
 
+
+
   return (
     <div className="my-Container mb-40">
       <h2 className="text-4xl">Shop by category section</h2>
 
       <div className="text-center mt-10">
         <Tabs className="">
-          <TabList className="">
+          <TabList className="bg-red-400 rounded-t-[30px] font-medium text-white">
             <Tab onClick={() => handelactiveToyas("Toys Pc game")}>
               <div
                 className={`${
-                  activeToyas == "Toys Pc game"
-                    ? "text-white px-4 py-4 bg-red-500"
-                    : ""
+                  activeToyas == "Toys Pc game" ? "text-red-500 px-4 py-4 " : ""
                 }`}
               >
                 Toys Pc game
@@ -47,7 +46,7 @@ const ShopByCategory = () => {
               <div
                 className={`${
                   activeToyas == "Toys for mubile game"
-                    ? "text-white px-4 py-4 bg-red-500"
+                    ? "text-red-500 px-4 py-4"
                     : ""
                 }`}
               >
@@ -58,7 +57,7 @@ const ShopByCategory = () => {
               <div
                 className={`${
                   activeToyas == "Toys for child video game"
-                    ? "text-white px-4 py-4 bg-red-500"
+                    ? " px-4 py-4 text-red-500"
                     : ""
                 }`}
               >
@@ -108,7 +107,7 @@ const ShopByCategory = () => {
             </div>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-3  gap-4 mt-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3  gap-4 mt-8">
               {ctoys.slice(0, 3).map((ctoy) => (
                 <div key={ctoy._id}>
                   <div className="card h-full card-compact w-full bg-base-100 shadow-xl">
@@ -131,14 +130,16 @@ const ShopByCategory = () => {
                         Rating:
                         <Rating
                           style={{ maxWidth: 100 }}
-                          value={ctoy.Rating}
+                          value={ctoy?.Rating}
                           readOnly
                         />
                       </p>
                       <div className="card-actions justify-end">
-                        <Link>
-                          <button className="my-btn flex gap-2 items-center">
-                            Buy Now <FaArrowRight />
+                        <Link to={`/toy-detail/${ctoy?._id}`}>
+                          <button
+                            className="my-btn flex gap-2 items-center"
+                          >
+                            View Detail <FaArrowRight />
                           </button>
                         </Link>
                       </div>
@@ -149,7 +150,7 @@ const ShopByCategory = () => {
             </div>
           </TabPanel>
           <TabPanel>
-            <div className="grid grid-cols-3  gap-4 mt-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3  gap-4 mt-8">
               {ctoys.slice(0, 3).map((ctoy) => (
                 <div key={ctoy._id}>
                   <div className="card h-full card-compact w-full bg-base-100 shadow-xl">
@@ -177,9 +178,9 @@ const ShopByCategory = () => {
                         />
                       </p>
                       <div className="card-actions justify-end">
-                        <Link>
+                        <Link to={`/toy-detail/${ctoy?._id}`}>
                           <button className="my-btn flex gap-2 items-center">
-                            Buy Now <FaArrowRight />
+                            View Detail <FaArrowRight />
                           </button>
                         </Link>
                       </div>

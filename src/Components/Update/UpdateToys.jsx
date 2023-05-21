@@ -8,11 +8,13 @@ import { useLoaderData } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
+import useTitle from "../../hooks/useTitle";
 
 const UpdateToys = () => {
   const [selectedOptionm, setSelectedOption] = useState(null);
   const { user } = useContext(AuthContext);
   const ratingRef = useRef(null);
+  useTitle("Update Toys");
 
   const game = useLoaderData();
 
@@ -70,8 +72,8 @@ const UpdateToys = () => {
         console.log(data);
         if (data.matchedCount > 0) {
           Swal.fire(
-            "game post successfully",
-            "Your new video game added successful",
+            "Successful",
+            "Your post updated successfully",
             "success"
           );
           form.reset();
@@ -82,7 +84,7 @@ const UpdateToys = () => {
   return (
     <div className="my-Container my-6">
       <h2 className="my-6 text-[#4A3F5E] text-center flex items-center justify-center gap-6 text-5xl font-medium">
-        <FaRegHandPointRight className="text-[#EBB943]" /> Update Your Toys
+        <FaRegHandPointRight className="text-[#EBB943]" /> Update Your Toy
       </h2>
       <div>
         <div className="card card-compact w-full shadow-xl">
@@ -109,7 +111,7 @@ const UpdateToys = () => {
                 <div className="w-full">
                   <label className="label">
                     <span className="text-md font-medium">
-                      Name of the Toys
+                      Name of the Toy
                     </span>
                   </label>
                   <input
@@ -155,7 +157,7 @@ const UpdateToys = () => {
                 <div className="w-full">
                   <label className="label">
                     <span className="text-md font-medium">
-                      Select Toys category
+                      Select Toy category
                     </span>
                   </label>
                   <Select
@@ -169,11 +171,11 @@ const UpdateToys = () => {
                 </div>
                 <div className="w-full">
                   <label className="label">
-                    <span className="text-md font-medium">Game price</span>
+                    <span className="text-md font-medium">Toy price</span>
                   </label>
                   <input
                     type="number"
-                    placeholder="$ price of the game"
+                    placeholder="$ price of the Toy"
                     name="price"
                     defaultValue={price}
                     className="my-input "
@@ -183,15 +185,8 @@ const UpdateToys = () => {
               <div className="flex gap-10 mb-4">
                 <div className="w-full">
                   <label className="label">
-                    <span className="text-md font-medium">Game rating</span>
+                    <span className="text-md font-medium">Toy rating</span>
                   </label>
-                  {/* <input
-                    type="number"
-                    placeholder="rating of the game"
-                    name="raging"
-                    defaultValue={rating}
-                    className=" my-input"
-                  /> */}
                   <Rating
                     style={{ maxWidth: 180 }}
                     ref={ratingRef}
@@ -217,16 +212,9 @@ const UpdateToys = () => {
               <div className="w-full">
                 <label className="label">
                   <span className="text-md font-medium">
-                    Description of the game
+                    Description of the Toy
                   </span>
                 </label>
-                {/* <input
-                  type="text"
-                  placeholder="description of the game"
-                  name="description"
-                  defaultValue={description}
-                  className="my-input "
-                /> */}
                 <textarea
                   className="textarea textarea-bordered w-full h-40"
                   placeholder="Bio"
@@ -235,9 +223,9 @@ const UpdateToys = () => {
                 ></textarea>
               </div>
               <input
-                className="bg-green-500 mt-8 text-white py-3 px-8 text-lg font-semibold rounded-md"
+                className="bg-green-500 cursor-pointer mt-8 text-white py-3 px-8 text-lg font-semibold rounded-md"
                 type="submit"
-                value="Update your game"
+                value="Update your Toy"
               />
             </form>
           </div>

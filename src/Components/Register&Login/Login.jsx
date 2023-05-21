@@ -4,6 +4,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import GoogleSigning from "./GoogleSigning";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
   const [error, setError] = "";
@@ -11,6 +12,8 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+
+  useTitle("Login");
 
   const handelLogin = (event) => {
     event.preventDefault();
@@ -66,7 +69,7 @@ const Login = () => {
           </div>
           <div className="form-control mt-6">
             <input
-              className="w-full py-3 rounded-md text-white font-medium text-xl bg-blue-500 outline-0"
+              className="w-full py-3 cursor-pointer rounded-md text-white font-medium text-xl bg-blue-500 outline-0"
               type="submit"
               value="Login"
             />
