@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const Gallery = () => {
   const [gallery, setGallery] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/galleryImg")
+    fetch("https://assingment-11-sarver-sihabmolla11.vercel.app/galleryImg")
       .then((res) => res.json())
       .then((data) => setGallery(data));
   }, []);

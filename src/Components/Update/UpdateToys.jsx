@@ -62,7 +62,7 @@ const UpdateToys = () => {
     // console.log(UpdateToys);
     console.log(uprating);
 
-    fetch(`http://localhost:5000/toys/${_id}`, {
+    fetch(`https://assingment-11-sarver-sihabmolla11.vercel.app/toys/${_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(UpdateToys),
@@ -71,11 +71,7 @@ const UpdateToys = () => {
       .then((data) => {
         console.log(data);
         if (data.matchedCount > 0) {
-          Swal.fire(
-            "Successful",
-            "Your post updated successfully",
-            "success"
-          );
+          Swal.fire("Successful", "Your post updated successfully", "success");
           form.reset();
         }
       });
@@ -110,9 +106,7 @@ const UpdateToys = () => {
                 </div>
                 <div className="w-full">
                   <label className="label">
-                    <span className="text-md font-medium">
-                      Name of the Toy
-                    </span>
+                    <span className="text-md font-medium">Name of the Toy</span>
                   </label>
                   <input
                     type="text"

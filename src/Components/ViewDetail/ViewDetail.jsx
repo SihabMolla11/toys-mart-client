@@ -23,7 +23,7 @@ const ViewDetail = () => {
   } = toy || {};
 
   return (
-    <div className="my-Container mt-10">
+    <div className="my-Container my-10">
       <div className="hero min-h-screen">
         <div className="hero-content flex-col gap-10 lg:flex-row">
           <img src={photo} className="w-[50%] rounded-lg shadow-2xl" />

@@ -101,12 +101,15 @@ const Header = () => {
             {navItems}
           </ul>
         </div>
+
         <div className="  navbar-end flex gap-8">
           <div className="hidden md:block">
             {user ? (
-              <button onClick={handelLogOut} className="my-btn ">
-                Log Out
-              </button>
+              <div>
+                <button onClick={handelLogOut} className="my-btn ">
+                  Log Out
+                </button>
+              </div>
             ) : (
               <Link to="/login" className="my-btn ">
                 Login

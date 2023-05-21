@@ -8,7 +8,7 @@ const App = () => {
       <div>
         <Header></Header>
       </div>
-      <div className="min-h-[calc(100vh-50px)]" >
+      <div className="min-h-[calc(100vh-472px)]" >
         <Outlet></Outlet>
       </div>
       <div>

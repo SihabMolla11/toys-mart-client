@@ -8,14 +8,14 @@ import useTitle from "../../hooks/useTitle";
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [mytoys, setMyToys] = useState([]);
-  const url = `http://localhost:5000/toys-mydata?email=${user?.email}`;
+  const url = `https://assingment-11-sarver-sihabmolla11.vercel.app/toys-mydata?email=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setMyToys(data));
   }, [url]);
 
-  useTitle('My Toys')
+  useTitle("My Toys");
 
   //   console.log(mytoys);
 
@@ -33,9 +33,12 @@ const MyToys = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
-        fetch(`http://localhost:5000/toys/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://assingment-11-sarver-sihabmolla11.vercel.app/toys/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {

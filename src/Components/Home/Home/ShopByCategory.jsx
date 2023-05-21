@@ -8,10 +8,9 @@ import { Link } from "react-router-dom";
 const ShopByCategory = () => {
   const [activeToyas, setActiveToys] = useState("Toys Pc game");
 
-
   const [toys, setToys] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://assingment-11-sarver-sihabmolla11.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
@@ -23,8 +22,6 @@ const ShopByCategory = () => {
   const handelactiveToyas = (category) => {
     setActiveToys(category);
   };
-
-
 
   return (
     <div className="my-Container mb-40">
@@ -136,9 +133,7 @@ const ShopByCategory = () => {
                       </p>
                       <div className="card-actions justify-end">
                         <Link to={`/toy-detail/${ctoy?._id}`}>
-                          <button
-                            className="my-btn flex gap-2 items-center"
-                          >
+                          <button className="my-btn flex gap-2 items-center">
                             View Detail <FaArrowRight />
                           </button>
                         </Link>

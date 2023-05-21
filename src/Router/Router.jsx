@@ -46,7 +46,9 @@ const router = createBrowserRouter([
         path: "update/:id",
         element: <UpdateGame></UpdateGame>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/toys/${params.id}`),
+          fetch(
+            `https://assingment-11-sarver-sihabmolla11.vercel.app/toys/${params.id}`
+          ),
       },
       {
         path: "/blog",
@@ -68,7 +70,9 @@ const router = createBrowserRouter([
           </PrivateRout>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/toys/${params.id}`),
+          fetch(
+            `https://assingment-11-sarver-sihabmolla11.vercel.app/toys/${params.id}`
+          ),
       },
     ],
   },

@@ -9,7 +9,7 @@ const AllToys = () => {
   const [toys, setToys] = useState([]);
   useTitle("All Toys");
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://assingment-11-sarver-sihabmolla11.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
@@ -19,7 +19,9 @@ const AllToys = () => {
 
   const handelSearch = (event) => {
     event.preventDefault();
-    fetch(`http://localhost:5000/toysSearch/${serchText}`)
+    fetch(
+      `https://assingment-11-sarver-sihabmolla11.vercel.app//toysSearch/${serchText}`
+    )
       .then((res) => res.json())
       .then((data) => setToys(data));
   };

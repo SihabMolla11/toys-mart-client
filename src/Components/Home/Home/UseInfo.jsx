@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const UseInfo = () => {
   const [useInfo, setUseInfo] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/useInfo")
+    fetch("https://assingment-11-sarver-sihabmolla11.vercel.app/useInfo")
       .then((res) => res.json())
       .then((data) => setUseInfo(data));
   }, []);
