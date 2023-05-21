@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import GoogleSigning from "./GoogleSigning";
@@ -8,6 +8,9 @@ import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const [error, setError] = "";
   const { loginUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handelLogin = (event) => {
     event.preventDefault();
@@ -22,6 +25,7 @@ const Login = () => {
         toast.success("Your successfully login", {
           position: "top-center",
         });
+        navigate(from, { replace: true });
         form.rest();
       })
       .catch((error) => {

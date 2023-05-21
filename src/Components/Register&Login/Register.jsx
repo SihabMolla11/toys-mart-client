@@ -25,12 +25,12 @@ const Register = () => {
       .then((result) => {
         const loggingUser = result.user;
         console.log(loggingUser);
-        toast.success("successfully registered", {
+        toast.success("Register successful", {
           position: "top-center",
         });
         form.reset();
         setError("");
-        navigate("/");
+        // navigate("/");
       })
       .catch((error) => {
         setError(error.message);

@@ -19,7 +19,7 @@ const ShopByCategory = () => {
 
   //   console.log(toys);
 
-  const ctoys = toys.filter((toy) => toy.category.value == activeToyas);
+  const ctoys = toys.filter((toy) => toy?.category?.value == activeToyas);
   console.log(ctoys);
   const handelactiveToyas = (category) => {
     setActiveToys(category);

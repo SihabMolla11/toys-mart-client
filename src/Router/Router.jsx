@@ -10,6 +10,7 @@ import Error from "../Components/Error";
 import UpdateGame from "../Components/Update/UpdateToys";
 import Home from "../Components/Home/Home";
 import ViewDetail from "../Components/ViewDetail/ViewDetail";
+import PrivateRout from "./PrivateRout";
 
 const router = createBrowserRouter([
   {
@@ -27,11 +28,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/myToys",
-        element: <MyToys></MyToys>,
+        element: (
+          <PrivateRout>
+            <MyToys></MyToys>
+          </PrivateRout>
+        ),
       },
       {
         path: "/addToys",
-        element: <AddToys></AddToys>,
+        element: (
+          <PrivateRout>
+            <AddToys></AddToys>
+          </PrivateRout>
+        ),
       },
       {
         path: "update/:id",
@@ -53,7 +62,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/toy-detail/:id",
-        element: <ViewDetail></ViewDetail>,
+        element: (
+          <PrivateRout>
+            <ViewDetail></ViewDetail>
+          </PrivateRout>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/toys/${params.id}`),
       },

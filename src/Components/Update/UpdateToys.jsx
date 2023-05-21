@@ -13,13 +13,21 @@ const UpdateToys = () => {
   const [selectedOptionm, setSelectedOption] = useState(null);
   const { user } = useContext(AuthContext);
   const ratingRef = useRef(null);
-  const [rating, setRating] = useState(0);
 
   const game = useLoaderData();
 
-  const { _id, photo, toysName, price, quantity, category } = game;
+  const {
+    _id,
+    photo,
+    toysName,
+    price,
+    rating,
+    description,
+    quantity,
+    category,
+  } = game;
   // console.log(name)
-
+  const [uprating, setRating] = useState(rating);
   const options = [
     { value: "Toys Pc game", label: "Toys Pc game" },
     { value: "Toys for mubile game", label: "Toys for mubile game" },
@@ -48,8 +56,9 @@ const UpdateToys = () => {
       quantity,
     };
     UpdateToys.category = selectedOptionm;
-    UpdateToys.rating = rating;
+    UpdateToys.rating = uprating;
     // console.log(UpdateToys);
+    console.log(uprating);
 
     fetch(`http://localhost:5000/toys/${_id}`, {
       method: "PUT",
@@ -186,7 +195,7 @@ const UpdateToys = () => {
                   <Rating
                     style={{ maxWidth: 180 }}
                     ref={ratingRef}
-                    value={rating}
+                    value={uprating}
                     onChange={setRating}
                   />
                 </div>
@@ -221,7 +230,7 @@ const UpdateToys = () => {
                 <textarea
                   className="textarea textarea-bordered w-full h-40"
                   placeholder="Bio"
-                  // defaultValue={description}
+                  defaultValue={description}
                   name="description"
                 ></textarea>
               </div>

@@ -13,6 +13,7 @@ const AllToys = () => {
   }, []);
 
   const [serchText, setSearchText] = useState("");
+  const [showAll, setshowAll] = useState(false);
 
   const handelSearch = (event) => {
     event.preventDefault();
@@ -55,11 +56,22 @@ const AllToys = () => {
             </tr>
           </thead>
           <tbody>
-            {toys.map((toy) => (
+            {toys.slice(0, !showAll ? 20 : toys.length).map((toy) => (
               <ToysTable key={toy._id} toy={toy}></ToysTable>
             ))}
           </tbody>
         </table>
+        <div className="text-center">
+          {!showAll ? (
+            <button onClick={() => setshowAll(true)} className="my-btn">
+              Show all
+            </button>
+          ) : (
+            <button onClick={() => setshowAll(false)} className="my-btn">
+              Show less
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
