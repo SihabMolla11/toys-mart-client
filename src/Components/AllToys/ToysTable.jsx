@@ -1,12 +1,11 @@
 import { FaArrowRight } from "react-icons/fa";
 
-const ToysTable = ({ game }) => {
-  const { _id, name, photo, toysName, price, quantity, category } = game;
+const ToysTable = ({ toy }) => {
+  const { _id, name, photo, toysName, price, quantity, category } = toy;
 
-    const handelViewDetail = (id)=>{
-        console.log(id)
-    }
-
+  const handelViewDetail = (id) => {
+    console.log(id);
+  };
 
   return (
     <>
@@ -34,7 +33,13 @@ const ToysTable = ({ game }) => {
           <p className=" font-semibold text-center">{quantity}</p>
         </td>
         <td className="text-center">
-          <button onClick={()=>handelViewDetail(_id)} className="my-btn flex items-center gap-4"> <span>View Detail</span> <FaArrowRight/> </button>
+          <button
+            onClick={() => handelViewDetail(_id)}
+            className="my-btn flex items-center gap-4"
+          >
+            {" "}
+            <span>View Detail</span> <FaArrowRight />{" "}
+          </button>
         </td>
       </tr>
     </>
