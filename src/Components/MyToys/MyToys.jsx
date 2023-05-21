@@ -6,17 +6,17 @@ import Swal from "sweetalert2";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
-  const [myGames, setMyGames] = useState([]);
+  const [mytoys, setMyToys] = useState([]);
   const url = `http://localhost:5000/toys-mydata?email=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setMyGames(data));
+      .then((data) => setMyToys(data));
   }, [url]);
 
-  //   console.log(myGames);
+  //   console.log(mytoys);
 
-  const handelDEleteGame = (id) => {
+  const handelDEleteToya = (id) => {
     // console.log(id);
 
     Swal.fire({
@@ -36,17 +36,49 @@ const MyToys = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              const remaining = myGames.filter((myGame) => myGame._id !== id);
-              setMyGames(remaining);
+              const remaining = mytoys.filter((myToy) => myToy._id !== id);
+              setMyToys(remaining);
             }
           });
       }
     });
   };
 
+  const handellowesPriceSort = () => {
+    const sotrLowprice = mytoys.sort((a, b) => {
+      return new Number(a?.price) - new Number(b?.price);
+    });
+    setMyToys([...sotrLowprice]);
+  };
+
+  const handelHeigthPriceSort = () => {
+    const sotrLowprice = mytoys.sort((a, b) => {
+      return new Number(b?.price) - new Number(a?.price);
+    });
+    setMyToys([...sotrLowprice]);
+  };
+
   return (
     <>
       <div className=" my-Container mt-10 ">
+        <div className="my-4">
+          <div className="dropdown">
+            <label tabIndex={0} className="my-btn m-1">
+              Sort by price
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-60"
+            >
+              <li onClick={handellowesPriceSort}>
+                <a>lowest price to heigh price</a>
+              </li>
+              <li onClick={handelHeigthPriceSort}>
+                <a>Heigh price to lowest price</a>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div className="overflow-x-auto rounded-t-lg  ">
           <table className="table table-compact  w-full">
             <thead className="border-t-2 rounded-lg border-[#ffffff]">
@@ -58,16 +90,20 @@ const MyToys = () => {
                 <th className="text-center border-[#ffffff]">quantity</th>
                 <th className="border-x-2 border-[#ffffff]">ratting</th>
                 {/* <th> description</th> */}
-                <th className="text-center border-x-2 border-[#ffffff]">update</th>
-                <th className="text-center border-x-2 border-[#ffffff]">DELETE</th>
+                <th className="text-center border-x-2 border-[#ffffff]">
+                  update
+                </th>
+                <th className="text-center border-x-2 border-[#ffffff]">
+                  DELETE
+                </th>
               </tr>
             </thead>
             <tbody>
-              {myGames.map((myGame) => (
+              {mytoys.map((myToy) => (
                 <MyToysRwo
-                  key={myGame._id}
-                  myGame={myGame}
-                  handelDEleteGame={handelDEleteGame}
+                  key={myToy._id}
+                  myToy={myToy}
+                  handelDEleteToya={handelDEleteToya}
                 ></MyToysRwo>
               ))}
             </tbody>

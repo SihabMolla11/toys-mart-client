@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 
-const MyToysRwo = ({ myGame, handelDEleteGame }) => {
+const MyToysRwo = ({ myToy, handelDEleteToya }) => {
   const {
     _id,
     rating,
@@ -13,7 +13,7 @@ const MyToysRwo = ({ myGame, handelDEleteGame }) => {
     price,
     quantity,
     category,
-  } = myGame;
+  } = myToy;
 
   return (
     <>
@@ -54,7 +54,7 @@ const MyToysRwo = ({ myGame, handelDEleteGame }) => {
 
         <td className="text-center">
           <button
-            onClick={() => handelDEleteGame(_id)}
+            onClick={() => handelDEleteToya(_id)}
             className="text-2xl p-2 rounded-full hover:text-red-600 hover:bg-red-300 bg-red-100 text-red-500"
           >
             <FaRegTrashAlt />
