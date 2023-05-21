@@ -67,7 +67,7 @@ const ShopByCategory = () => {
             </Tab>
           </TabList>
           <TabPanel>
-            <div className="grid grid-cols-3  gap-4 mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 mt-8">
               {ctoys.slice(0, 3).map((ctoy) => (
                 <div key={ctoy._id}>
                   <div className="card h-full card-compact w-full bg-base-100 shadow-xl">

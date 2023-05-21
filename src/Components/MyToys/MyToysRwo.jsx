@@ -7,7 +7,6 @@ const MyToysRwo = ({ myToy, handelDEleteToya }) => {
   const {
     _id,
     rating,
-    description,
     photo,
     toysName,
     price,

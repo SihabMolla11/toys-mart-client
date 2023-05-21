@@ -68,13 +68,32 @@ const Header = () => {
               className=" font-medium  menu-compact dropdown-content mt-3 p-2 shadow bg-base-200 rounded-box w-96"
             >
               {navItems}
+              <div className=" md:hidden">
+                {user ? (
+                  <button onClick={handelLogOut} className="my-btn ">
+                    Log Out
+                  </button>
+                ) : (
+                  <Link to="/login" className="my-btn ">
+                    {loading ? (
+                      <div
+                        className="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-gray-400 rounded-full"
+                        role="status"
+                        aria-label="loading"
+                      >
+                        <span className="sr-only">Loading...</span>
+                      </div>
+                    ) : (
+                      <p>Login</p>
+                    )}
+                  </Link>
+                )}
+              </div>
             </ul>
           </div>
           <Link to="/" className="flex items-center gap-8">
             <img className="w-28" src={logo} alt="" />
-            <p className="text-2xl font-bold hidden md:block">
-              Game Toys Mart
-            </p>
+            <p className="text-2xl font-bold hidden md:block">Game Toys Mart</p>
           </Link>
         </div>
         <div className="hidden text-md lg:flex">
@@ -82,31 +101,33 @@ const Header = () => {
             {navItems}
           </ul>
         </div>
-        <div className="navbar-end flex gap-8">
-          {user ? (
-            <button onClick={handelLogOut} className="my-btn ">
-              Log Out
-            </button>
-          ) : (
-            <Link to="/login" className="my-btn ">
-              {loading ? (
-                <div
-                  className="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-gray-400 rounded-full"
-                  role="status"
-                  aria-label="loading"
-                >
-                  <span className="sr-only">Loading...</span>
-                </div>
-              ) : (
-                <p>Login</p>
-              )}
-            </Link>
-          )}
+        <div className="  navbar-end flex gap-8">
+          <div className="hidden md:block">
+            {user ? (
+              <button onClick={handelLogOut} className="my-btn ">
+                Log Out
+              </button>
+            ) : (
+              <Link to="/login" className="my-btn ">
+                {loading ? (
+                  <div
+                    className="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-gray-400 rounded-full"
+                    role="status"
+                    aria-label="loading"
+                  >
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                ) : (
+                  <p>Login</p>
+                )}
+              </Link>
+            )}
+          </div>
           <div>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-22 rounded-full">
                 {user ? (
-                  <img title={user?.displayName} src={user.photoURL} />
+                  <img title={user?.displayName} src={user?.photoURL} />
                 ) : (
                   <div title="please login First" className="text-5xl">
                     <FaRegUserCircle />
