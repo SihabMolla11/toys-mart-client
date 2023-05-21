@@ -9,6 +9,7 @@ import Login from "../Components/Register&Login/Login";
 import Error from "../Components/Error";
 import UpdateGame from "../Components/Update/UpdateToys";
 import Home from "../Components/Home/Home";
+import ViewDetail from "../Components/ViewDetail/ViewDetail";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,6 @@ const router = createBrowserRouter([
       {
         path: "/allToys",
         element: <AllToys></AllToys>,
-        loader: () => fetch("http://localhost:5000/toys"),
       },
       {
         path: "/myToys",
@@ -50,6 +50,12 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login></Login>,
+      },
+      {
+        path: "/toy-detail/:id",
+        element: <ViewDetail></ViewDetail>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/toys/${params.id}`),
       },
     ],
   },

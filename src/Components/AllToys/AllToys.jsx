@@ -27,6 +27,7 @@ const AllToys = () => {
         <input
           onChange={(e) => setSearchText(e.target.value)}
           type="text"
+          placeholder="search toy"
           className="mb-6 p-3 outline-none rounded-s-lg w-full max-w-xs"
         />
         <button

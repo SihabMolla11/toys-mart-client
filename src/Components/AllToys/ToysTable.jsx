@@ -1,11 +1,8 @@
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ToysTable = ({ toy }) => {
   const { _id, name, photo, toysName, price, quantity, category } = toy;
-
-  const handelViewDetail = (id) => {
-    console.log(id);
-  };
 
   return (
     <>
@@ -33,13 +30,11 @@ const ToysTable = ({ toy }) => {
           <p className=" font-semibold text-center">{quantity}</p>
         </td>
         <td className="text-center">
-          <button
-            onClick={() => handelViewDetail(_id)}
-            className="my-btn flex items-center gap-4"
-          >
-            {" "}
-            <span>View Detail</span> <FaArrowRight />{" "}
-          </button>
+          <Link to={`/toy-detail/${_id}`}>
+            <button className="my-btn flex items-center gap-4">
+              <span>View Detail</span> <FaArrowRight />{" "}
+            </button>
+          </Link>
         </td>
       </tr>
     </>
