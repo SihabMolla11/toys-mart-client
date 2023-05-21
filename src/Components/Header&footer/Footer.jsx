@@ -16,7 +16,7 @@ const Footer = () => {
 
   return (
     <div className=" bg-gradient-to-r from-[#020838] to-[#2C0B02] rounded-tl-[200px]">
-      <div className="my-Container gap-20 p-10 grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 text-white">
+      <div className="my-Container pl-20 justify-center md:justify-start  gap-20 md:p-10 grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 text-white">
         <div className="">
           <img src={logo} alt="" />
         </div>
@@ -94,7 +94,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="my-Container">
+      <div className="my-Container my-4">
         <hr />
       </div>
       <div className="py-4 text-white text-center">
