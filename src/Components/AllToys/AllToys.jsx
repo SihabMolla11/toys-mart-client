@@ -27,7 +27,7 @@ const AllToys = () => {
   };
 
   return (
-    <div className="my-Container mt-10">
+    <div className="my-Container my-10">
       <div className="text-end">
         <input
           onChange={(e) => setSearchText(e.target.value)}
@@ -65,17 +65,19 @@ const AllToys = () => {
             ))}
           </tbody>
         </table>
-        <div className="text-center">
-          {!showAll ? (
-            <button onClick={() => setshowAll(true)} className="my-btn">
-              Show all
-            </button>
-          ) : (
-            <button onClick={() => setshowAll(false)} className="my-btn">
-              Show less
-            </button>
-          )}
-        </div>
+        {toys.length > 20 && (
+          <div className="text-center my-6">
+            {!showAll ? (
+              <button onClick={() => setshowAll(true)} className="my-btn">
+                Show all
+              </button>
+            ) : (
+              <button onClick={() => setshowAll(false)} className="my-btn">
+                Show less
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
