@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import GoogleSigning from "./GoogleSigning";
 import { ToastContainer, toast } from "react-toastify";
@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
-  const [error, setError] = "";
+  const [error, setError] = useState("");
   const { loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -29,6 +29,7 @@ const Login = () => {
           position: "top-center",
         });
         navigate(from, { replace: true });
+        setError("");
         form.rest();
       })
       .catch((error) => {

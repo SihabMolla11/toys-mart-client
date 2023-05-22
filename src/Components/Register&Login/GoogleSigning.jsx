@@ -3,10 +3,14 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const GoogleSigning = () => {
   const { googleSigning } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handelGoogleSigning = () => {
     googleSigning()
@@ -16,6 +20,8 @@ const GoogleSigning = () => {
         toast.success("Your successfully login", {
           position: "top-center",
         });
+        setError("");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error.message);
