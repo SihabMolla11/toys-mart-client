@@ -66,8 +66,8 @@ const MyToys = () => {
 
   return (
     <>
-      <div className=" my-Container mt-10 ">
-        <div className="my-4">
+      <div className=" my-Container my-10 ">
+        <div className="my-8">
           <div className="dropdown">
             <label tabIndex={0} className="my-btn m-1">
               Sort by price

@@ -1,6 +1,6 @@
 const Carousel = () => {
   return (
-    <div className="my-Container mb-10">
+    <div className="my-Container mb-10" data-aos="fade-in">
       <div className=" space-y-4 mb-3 ml-4">
         <h2 className="text-4xl font-semibold ">
           We have many of Video game collection

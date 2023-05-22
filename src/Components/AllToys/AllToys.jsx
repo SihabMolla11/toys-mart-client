@@ -20,7 +20,7 @@ const AllToys = () => {
   const handelSearch = (event) => {
     event.preventDefault();
     fetch(
-      `https://assingment-11-sarver-sihabmolla11.vercel.app//toysSearch/${serchText}`
+      `https://assingment-11-sarver-sihabmolla11.vercel.app/toysSearch/${serchText}`
     )
       .then((res) => res.json())
       .then((data) => setToys(data));

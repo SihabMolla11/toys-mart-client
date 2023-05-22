@@ -24,7 +24,7 @@ const ShopByCategory = () => {
   };
 
   return (
-    <div className="my-Container mb-40">
+    <div className="my-Container mb-40" data-aos="fade-in">
       <h2 className="text-4xl">Shop by category section</h2>
 
       <div className="text-center mt-10">

@@ -10,7 +10,7 @@ const Gallery = () => {
 
   return (
     <div className="my-Container my-10">
-      <div className="text-center">
+      <div className="text-center" data-aos="fade-in">
         <h2 className="text-4xl mb-4 font-medium">
           famous toys collections for video game
         </h2>
@@ -20,7 +20,10 @@ const Gallery = () => {
           toys collection here without delay.
         </p>
       </div>
-      <div className="grid mt-6 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 ">
+      <div
+        className="grid mt-6 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 "
+        data-aos="fade-in"
+      >
         {gallery.map((gImg) => (
           <div
             key={gImg._id}

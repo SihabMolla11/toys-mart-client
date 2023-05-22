@@ -10,11 +10,13 @@ const UseInfo = () => {
   console.log(useInfo);
 
   return (
-    <div className=" my-Container mb-10">
-      <h2 className="text-4xl font-semibold text-center mb-2">How it word</h2>
-      <p className="text-center text-lg mb-8">
-        Flow the section and Work step by step
-      </p>
+    <div className=" my-Container mb-10" data-aos="fade-in">
+      <div>
+        <h2 className="text-4xl font-semibold text-center mb-2">How it word</h2>
+        <p className="text-center text-lg mb-8">
+          Flow the section and Work step by step
+        </p>
+      </div>
 
       <div className="grid gap-20 px-20 grid-cols-1 lg:grid-cols-3">
         {useInfo.map((info) => (

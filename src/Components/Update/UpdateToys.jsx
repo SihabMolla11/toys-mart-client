@@ -23,6 +23,7 @@ const UpdateToys = () => {
     photo,
     toysName,
     price,
+    name,
     rating,
     description,
     quantity,
@@ -128,8 +129,8 @@ const UpdateToys = () => {
                     type="text"
                     placeholder="seller name"
                     name="name"
-                    readOnly
-                    defaultValue={user?.displayName}
+                    required
+                    defaultValue={name}
                     className=" my-input"
                   />
                 </div>
@@ -156,7 +157,7 @@ const UpdateToys = () => {
                   </label>
                   <Select
                     className="text-zinc-500"
-                    defaultValue={selectedOptionm}
+                    value={selectedOptionm}
                     onChange={setSelectedOption}
                     required
                     defaultValue={category}
